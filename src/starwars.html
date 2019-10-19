@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="data1"></ul>
+    <ul id="data2"></ul>
+    <button onclick="darthVader()">DARTH VADER</button>
+    <script>
+        const url1 = 'https://swapi.co/api/people/1'
+        const url2 = 'https://swapi.co/api/people/4/'
+        fetch(url1) // make the request
+            .then(response => response.json())
+            .then(data => {
+                let name = document.createElement('li')
+                let eyeColor = document.createElement('li')
+                let height = document.createElement('li')
+                let hairColor = document.createElement('li')
+                let div = document.createElement('div')
+                name.innerHTML = `Name: ${data.name}`
+                eyeColor.innerHTML = `Eye color: ${data.eye_color}`
+                height.innerHTML = `height: ${data.height}`
+                hairColor.innerHTML = `Eye color: ${data.hair_color}`
+                div.appendChild(name)
+                div.appendChild(eyeColor)
+                div.appendChild(height)
+                div.appendChild(hairColor)
+                document.getElementById("data1").appendChild(div);
+                console.log(data)
+            })
+
+        function darthVader() {
+            fetch(url2)
+                .then(response => response.json())
+                .then(data => {
+                    let vname = document.createElement('li')
+                    let veyeColor = document.createElement('li')
+                    let vheight = document.createElement('li')
+                    let vhairColor = document.createElement('li')
+                    let vdiv = document.createElement('div')
+                    vname.innerHTML = `Name: ${data.name}`
+                    veyeColor.innerHTML = `Eye color: ${data.eye_color}`
+                    vheight.innerHTML = `height: ${data.height}`
+                    vhairColor.innerHTML = `Eye color: ${data.hair_color}`
+                    vdiv.appendChild(vname)
+                    vdiv.appendChild(veyeColor)
+                    vdiv.appendChild(vheight)
+                    vdiv.appendChild(vhairColor)
+                    document.getElementById("data2").appendChild(vdiv);
+                    console.log(data)
+                })
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- Make an HTML page that fetches starwars data from an api and displays it:
+
+1. Make an HTML file
+2. Include a script
+3. Fetch data about Luke Skywalker from the from the following 
+url `https://swapi.co/api/people/1`
+4. Display it on the page
+5. Make a button with the text `DARTH VADER` on it
+6. When you click the button it fetches data from 
+`https://swapi.co/api/people/4/` and displays it on the page -->
